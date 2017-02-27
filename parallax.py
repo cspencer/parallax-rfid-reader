@@ -2,7 +2,6 @@
 
 import RPi.GPIO as GPIO
 import serial
-import time
 
 
 ENABLE_PIN  = 18              # The BCM pin number corresponding to GPIO1
@@ -61,7 +60,6 @@ def main():
             # If validate_rfid() returned a code, display it.
             if code:
                 print("Read RFID code: " + code);
-                time.sleep(1)
     except:
         # If we caught an exception, then disable the reader by setting
         # the pin to HIGH, then exit.
