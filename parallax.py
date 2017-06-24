@@ -6,9 +6,9 @@ import serial
 
 ENABLE_PIN  = 18              # The BCM pin number corresponding to GPIO1
 
-#SERIAL_PORT = '/dev/ttyAMA0'  # The location of our serial port.  This may
+SERIAL_PORT = '/dev/ttyAMA0'  # The location of our serial port.  This may
                               # vary depending on OS and RPi version.  The
-SERIAL_PORT = '/dev/ttyS0'   # RPi 3 has apparently used 'ttyAMA0' for
+#SERIAL_PORT = '/dev/ttyS0'   # RPi 3 has apparently used 'ttyAMA0' for
                               # Bluetooth and assigned 'ttyS0' to the GPIO
                               # serial port, so uncomment the appropriate
                               # SERIAL_PORT definition for your setup.
