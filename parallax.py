@@ -5,10 +5,19 @@ import serial
 
 
 ENABLE_PIN  = 18              # The BCM pin number corresponding to GPIO1
-SERIAL_PORT = '/dev/ttyAMA0'  # The location of our serial port.  This may
-                              # vary depending on OS version.
 
+#SERIAL_PORT = '/dev/ttyAMA0'  # The location of our serial port.  This may
+                              # vary depending on OS and RPi version.  The
+SERIAL_PORT = '/dev/ttyS0'   # RPi 3 has apparently used 'ttyAMA0' for
+                              # Bluetooth and assigned 'ttyS0' to the GPIO
+                              # serial port, so uncomment the appropriate
+                              # SERIAL_PORT definition for your setup.
+                              # Failing that, check the output of:
+                              #   $ dmesg | grep serial
+                              # to get an idea as to where serial has been
+                              # assigned to.
 
+                              
 def validate_rfid(code):
     # A valid code will be 12 characters long with the first char being
     # a line feed and the last char being a carriage return.
@@ -36,7 +45,7 @@ def main():
     # Setting the pin to LOW will turn the reader on.  You should notice
     # the green LED light on the reader turn red if successfully enabled.
 
-    print("Enabling RFID reader...\n")
+    print("Enabling RFID reader and reading from serial port: " + SERIAL_PORT)
     GPIO.output(ENABLE_PIN, GPIO.LOW)
 
     # Set up the serial port as per the Parallax reader's datasheet.
